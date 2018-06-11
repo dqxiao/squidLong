@@ -1,0 +1,14 @@
+
+\textbf{Edge selection boosted by multi-heuristics}
+To get the balance between anonymity and utility, we combined the generalized uniqueness metric $U$ and relevance $R$ metric by taking the ratio between them. 
+We denote the combination as Balance Factor (BF) which is defined as follows:
+\begin{equation*}
+    BF(v)=\frac{U(v)}{R(v)}
+\end{equation*}
+For a give vertex $v$, $U(v)$ is the normalized uniqueness score of its property value among all the node in the original graph; $R(v)$ is the sum of reliability relevance of edges adjacent to the vertex. 
+The higher value of BF represents the better trade-off between anonymity preserving and utility preserving. 
+Our algorithm uses this heuristic to select and perturb the edge of uncertain graphs, as outlined in Algorithm 2. 
+
+
+
+

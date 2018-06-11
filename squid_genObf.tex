@@ -1,0 +1,36 @@
+\begin{algorithm}[!htb]
+	\begin{algorithmic}[1]
+    	\item[] {\textbf{Input:}~Uncertain graph $\mathcal{G}$, the desirable obfuscation level $k$, \
+                tolerance parameter $\epsilon$, the standard deviation $\sigma$, $t=5$ five attempts and auto tuned size multiplier $c$.}
+        \item[] {\textbf{Output:}~A pair of the sanitized output $\mathcal{G}_\text{obf}$ and $\hat{\epsilon}$.}
+        \STATE {Compute the generalized uniqueness score $U$}
+        \STATE {Compute the reliability relevance $R$}
+        \STATE {Get $\mathcal{H}$:~$\frac{\epsilon}{2}\Number$ nodes with highest $U(v)R(v)$ score}
+        \STATE {Compute and normalize balance factor $BF(v)=\frac{U(v)}{R(v)}$}
+        \STATE {$\hat{\epsilon} \leftarrow 1$}
+   		\FOR{$t$ times} 
+         	\REPEAT  
+                \STATE {$E_{C} \leftarrow E$} 
+            	\STATE{randomly pick a vertex $u \in V \setminus \mathcal{H}$ according to $BF$}
+            	\STATE{randomly pick a vertex $v \in V \setminus \mathcal{H}$ according to $BF$}
+                \IF {$(u,v) \in E$}
+                    \STATE {$E_{C} \leftarrow E_{c} \setminus \lbrace(u,v)\rbrace$ with the probability $p(e)$}
+                \ELSE
+                    \STATE {$E_{c} \leftarrow E_{c} \cup \lbrace(u,v)\rbrace$}
+                \ENDIF
+            \UNTIL{$E_{C}=c|E|$}
+            \FORALL {$e \in E_{C}$} 
+            	\STATE {Compute $\sigma(e)$}
+                \STATE {Generate $r_{e} \leftarrow R_{\sigma(e)}$}
+                \STATE {Inject uncertainty: $p(e) \leftarrow p(e) + \big[ 1- 2 p(e) \big] \cdot r_{e}$}
+            \ENDFOR
+            \STATE {$\epsilon_{s} \leftarrow anonymityEvaluation(\mathcal{G}_{s})$ }
+            \IF {$\epsilon_{s} < \text{min}(\hat{\epsilon},\epsilon)$}
+                \STATE {$\hat{\epsilon} \leftarrow \epsilon_{s}$, $\mathcal{G}_\text{obf} \leftarrow \mathcal{G}_{s}$}
+            \ENDIF 
+        \ENDFOR 
+        \STATE {return $\langle \hat{\epsilon},  \mathcal{G}_\text{obf} \rangle$}
+      	\caption{Squid-genObf}
+        \label{alg:squid}
+    \end{algorithmic}
+\end{algorithm}

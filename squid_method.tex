@@ -1,0 +1,17 @@
+\subsection{The {\methodName}-obf Algorithm}
+\input{squid_genObf.tex}
+The {\methodName}-obf performs following steps to judiciously use the ``uncertainty budget" $\sigma$.
+
+[Line 1-2]~It computes the uniqueness and relevance level for each vertex $v \in V$. 
+The more unique a vertex is, the harder it is to obfuscate it. 
+The more relevant a vertex is, the more significant impact the mutation brings.
+
+[Line 3]~It first select the set $\mathcal{H}$ of $\frac{\epsilon}{2}\Number$ nodes, and exclude them from the subsequent mutation effort. Instead of excluding the nodes requires most considerable mutations (uniqueness), {\methodName}-obf also excludes the ones with significant structural relevance. 
+
+[Line 4]~The mutation over edges is needed to obfuscate the set of nodes not in $\mathcal{H}$. 
+Higher uncertainty is necessary t obfuscate  ``outliers", nodes with higher uniqueness score. 
+Thus, edges need to be sampled with the higher probability if they are adjacent to unique nodes. 
+Mutation over ``bridge-like" edges need to be minor to preserve data utility. 
+Thus, edges with higher relevance score need to be sampled with lower probability.
+We utilize two complementary heuristics, uniqueness (the anonymity-aware one) and relevance (the utility-aware one) to guide our edge selection and mutation. 
+In particular, it assigns a probability to every $v \in V$ which is proportional to the balance factor $BF(v)$ of $v$. 

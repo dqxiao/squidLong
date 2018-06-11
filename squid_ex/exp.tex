@@ -1,0 +1,63 @@
+\section{Empirical Study}
+\label{sec:ex}
+We evaluated the performance of {\methodName} in comparison with the Rep-based Anonymization (RA) and the Casting-based Anonymization (CA) methods.
+
+Recall that the RA method first extracts a single representative deterministic instance 
+via algorithms proposed by Parchas~{\etal} in~\cite{Parchas_Gullo_Papadias_Bonchi_2014}.
+Then, RA utilizes the deterministic graph anonymization method~\cite{Boldi_Injecting_2012} to produce the sanitized output.
+While, the CA method first casts the given uncertain graph into a weighted deterministic graph.
+Then, CA utilizes the weighted graph anonymization method, proposed by Sudipto~{\etal}~\cite{Das_Anonymizing_2010} to generate the corresponding sanitized output. 
+Finally, it re-casts the output to the probabilistic version.
+
+\begin{figure*}[!htb]
+    \centering
+    \subfigure[PPI]{
+    \includegraphics[width=.31\textwidth]{expResult/ppi_RD.pdf}
+    }
+    \subfigure[BK]{
+    \includegraphics[width=.31\textwidth]{expResult/bk_RD.pdf}
+    }
+    \subfigure[DBLP]{
+    \includegraphics[width=.31\textwidth]{expResult/dblp_RD.pdf}
+    }
+    \vspace{-5pt}
+    \caption{Reliability Discrepancy (RD) of sanitized uncertain graphs of different anonymization methods on three real graphs.}
+    \label{fig:rd}
+\end{figure*} 
+\begin{figure*}
+    \centering
+    \subfigure[PPI]{
+    \includegraphics[width=.31\textwidth]{expResult/ppi_dd.pdf}
+    }
+    \subfigure[BK]{
+    \includegraphics[width=.31\textwidth]{expResult/bk_dd.pdf}
+    }
+    \subfigure[DBLP]{
+    \includegraphics[width=.31\textwidth]{expResult/dblp_dd.pdf}
+    }
+    \vspace{-5pt}
+    \caption{Degree error of sanitized uncertain graphs of different anonymization methods on three real graphs.}
+    \vspace{-9pt}
+    \label{fig:dd}
+\end{figure*} 
+\input{squid_ex/setting.tex}
+\input{squid_ex/exp_gs.tex}
+\begin{figure*}
+    \vspace{-5pt}
+    \centering
+    \subfigure[PPI]{
+    \includegraphics[width=.30\textwidth]{expResult/ppi_time.pdf}
+    }
+    \subfigure[BK]{
+    \includegraphics[width=.30\textwidth]{expResult/bk_time.pdf}
+    }
+    \subfigure[DBLP]{
+    \includegraphics[width=.30\textwidth]{expResult/dblp_time.pdf}
+    }
+    \vspace{-5pt}
+    \caption{Time efficiency of different anonymization methods on three real graphs.}
+    \label{fig:time}
+    \vspace{-10pt}
+\end{figure*}
+\input{squid_ex/exp_time.tex}
+\input{squid_ex/exp_apl.tex}

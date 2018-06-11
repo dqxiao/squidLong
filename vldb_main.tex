@@ -1,0 +1,114 @@
+% THIS IS AN EXAMPLE DOCUMENT FOR VLDB 2012
+% based on ACM SIGPROC-SP.TEX VERSION 2.7
+% Modified by  Gerald Weber <gerald@cs.auckland.ac.nz>
+% Removed the requirement to include *bbl file in here. (AhmetSacan, Sep2012)
+% Fixed the equation on page 3 to prevent line overflow. (AhmetSacan, Sep2012)
+\documentclass{vldb}
+
+\usepackage{subfigure}
+\usepackage{color}
+\usepackage{balance}  % for  \balance command ON LAST PAGE 
+\usepackage{graphicx}
+\usepackage{epstopdf}  % used for generating pdf 
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage[compress]{cite}
+\usepackage{amsfonts} 
+
+% \let\proof\relax
+% \let\endproof\relax
+\usepackage{amsthm}
+
+
+\usepackage{caption}
+\usepackage{color}
+\usepackage[ruled]{algorithm}
+\usepackage{algorithmic}
+\renewcommand{\algorithmiccomment}[1]{\bgroup #1 \egroup}
+
+
+
+
+\newcommand{\ie}[0]{\textit{i.e.}}
+\newcommand{\eg}[0]{\textit{e.g.}}
+\newcommand{\etal}[0]{\textit{et al.}}
+\newcommand{\wrt}[0]{\textit{w.r.t.}}
+
+
+\newcommand{\keobf}{\textit{$(k,\epsilon)$-obf}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\genobf}{\texttt{\textbf{genObf}}}
+\newcommand{\ere}{$\mathcal{E}RR-$eval}
+\newcommand{\pg}{\mathcal{G}}
+\newcommand{\Constraint}{$\mathcal{C}$}
+\newcommand{\Number}{\|v\|}
+
+
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}
+\newtheorem{problem}{Problem}
+\newtheorem{example}{Example}
+\newtheorem{observation}{Observation}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\methodName}{Squid}
+\newcommand{\soaName}{Obf}
+
+\begin{document}
+
+
+% ****************** TITLE ****************************************
+
+\title{Sharing Uncertain Graphs with Syntactic Anonymity}
+%\subtitle{[Extended Abstract]
+%\titlenote{A full version of this paper is available as\textit{Author's Guide to Preparing ACM SIG Proceedings Using \LaTeX$2_\epsilon$\ and BibTeX} at \texttt{www.acm.org/eaddress.htm}}}
+
+
+\numberofauthors{3} 
+
+\author{
+       \alignauthor
+       Dongqing Xiao\\
+              \affaddr{Worcester Polytechnic Institute}\\
+              \affaddr{100 Institute Road}\\
+              \affaddr{Worcester, MA, USA}\\
+              \email{dxiao@wpi.edu}
+       % 2nd. author
+       \alignauthor
+       Mohamed Elatbakh \\
+              \affaddr{Worcester Polytechnic Institute}\\
+              \affaddr{100 Institute Road}\\
+              \affaddr{Worcester, MA, USA}\\
+              \email{@wpi.edu}
+       % 3rd. author
+       \alignauthor 
+       Xiangnan Kong \\
+              \affaddr{Worcester Polytechnic Institute}\\
+              \affaddr{100 Institute Road}\\
+              \affaddr{Worcester, MA, USA}\\
+              \email{xkong@wpi.edu}
+}
+
+\maketitle
+
+\begin{abstract}
+Many graphs in real-world applications, such as social network and business to business network, are not deterministic but are uncertain. Related research such as social science and viral marketing requires open access to such uncertain graph datasets. While sharing these datasets often risks exposing sensitive data to the public. Current works mainly concern about privacy issues with deterministic graph sharing. 
+The uncertain scenario is overlooked.
+
+In this paper, we study the problem of sharing uncertain graphs with syntactic anonymity. 
+We first show conventional methods are not applicable for sharing uncertain graph. 
+By disregarding the possible world semantic of uncertain graphs, they significantly disrupt the stochastic structure. Our work seeks a solution to share meaningful probabilistic graphs without compromising user privacy. We develop a syntactically private algorithm, Squid, for solving this problem. It integrates the possible world semantic into the core of anonymization. It enables a fine-grained, uncertainty-aware control over the injected noise. We apply our method to real uncertain graphs and show its efficiency and practical utility. 
+\end{abstract}
+\input{motivation/intro}
+\input{relates.tex}
+\input{notation.tex}
+\input{state_of_art.tex}
+\input{squid.tex}
+\input{squid_ex/exp.tex}
+\input{conclusion.tex}
+\bibliographystyle{abbrv}
+\bibliography{refs.bib} 
+
+\end{document}

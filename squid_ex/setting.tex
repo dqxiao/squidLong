@@ -1,0 +1,19 @@
+\subsection{Experiment Settings}
+
+\input{squid_ex/dataset_table.tex}
+
+\textbf{Datasets}~~We test them on three uncertain graphs: PPI, BrightKite (BK) and DBLP as described in Table \ref{tab:dataset}. They have been widely used in the study of uncertain graphs~\cite{Zhao_Detecting_2014,Potamias_K_2010,Jin_Distance_2011}. 
+
+\begin{itemize}
+	\item{PPI is a dataset of protein-protein interactions, provided by Disease Module Identification DREAM Challenge. The probability of any edge corresponds to the confidence that the interaction actually exists, which is obtained through biological experiments.}
+	\item{Brightkite is a location-based social network. In this dataset, each node represent a user. The probability of any edge corresponds to the chance that two users visit each other.}
+	\item{DBLP is a dataset of scientific publications and authors. Each node represent an author. Two authors are connected by an edge if they have co-authored in a project. The uncertainty on the edge denotes the likelihood that the two authors will collaborate in a new project.}
+\end{itemize}
+% Answer the question why use these dataset 
+DBLP dataset only has a few probability values, while probability values of Brightkite  are generally very small. The PPI dataset has a more uniform probability distribution. We also present their degree distributions of “unique” nodes (with high degree and obfuscation level is smaller than 300). Observe that, all the three graphs have a heavy-tailed degree distribution. Namely, they are difficult to be obfuscated.
+
+\textbf{Parameter Setting}~~We consider the obfuscation level $k$ in the range $[100,300]$, and possible tolerance values $\epsilon$ to explore their performance difference. 
+
+\textbf{Statistics}~~For every obfuscated result, we sampled $N$ possible worlds to compute its statistics of interest. Note that it has been shown that 1000 possible worlds usually suffices to achieve accuracy converge.  Here, we report their discrepancy against the original one. The smaller discrepancy, the better uncertain graph data utility preserving.
+
+

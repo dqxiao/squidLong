@@ -1,0 +1,34 @@
+\section{Related Work}
+\label{sec:relatedWork}
+A significant amount of prior work has been done on protecting the privacy of network datasets.
+The comprehensive survey is out of the scope of this paper. 
+Here, we briefly summarize related work and clarify our privacy goal. 
+
+\textbf{Syntactic Privacy.}~~
+Early works on privacy-preserving network publishing focus on developing anonymization techniques. 
+Many of them modify the graph structure in subtle ways that guarantee privacy but keep much of graph structure for release. 
+The released graph is available for all the analysis tasks. 
+These approaches usually provide privacy protection against specific de-anonymization attacks. 
+Most of them leverage syntactic privacy models derived from $k$-anonymity~\cite{Sweeney:2002:KAM:774544.774552} which requires creating $k$ same entities ({\eg} neighborhoods, degree nodes) to blend victims. 
+
+Related graph anonymization methods can be classified into four main categories: (1) Clustering-based generalization~\cite{Hay_Anonymizing_2007,Bhagat_Class_2009,hay2010resisting}; (2)~{\em Edge modification}~\cite{Liu_Towards_2008, Zhou_Preserving_2008, Wang2011, Wu_k_2010, Skarkala_Privacy_2012}; 
+(3)~{\em Edge randomization}~\cite{Liu_Privacy_2009,Ying_Randomizing_2008, Ninggal_Utility_2015};
+and~(4)~{\em Uncertainty semantic-based modifications} which add uncertainty to some edges and thus converting the deterministic graph to an uncertain version~\cite{Boldi_Injecting_2012, Nguyen_Anonymizing_2015}. The uncertainty semantic-based approaches are known as the state-of-art ones because of their excellent privacy-utility trade-off, brought by the fine-grained perturbation leveraging the uncertain semantics. 
+Our method belongs to the fourth category while for the probabilistic context. 
+
+ 
+\textbf{Differential Privacy.}~~Another option is to apply {$\epsilon$}-differential privacy policy to providing privacy guarantee. It roughly falls into two directions. The first direction aims to release specific differentially private mining results, such as degree distributions, sub-graph counts, and frequent graph patterns~\cite{Xiao_Differentially_2014,Day:2016}. These methods only publish query result. However, there are many situations in which answering statistical queries simply does not achieve the purpose of sharing the graph.  
+The second direction aims to share the meaningful graph~\cite{Sala_Sharing_2011}. Most research in this direction projects an input graph to dK-series and ensures differential privacy on dK-series statistics. Later, private statistics are then either fed into generators or MCMC process to generate a fit synthetic graphs. While current techniques are still inadequate to provide desirable data utility for many graph mining tasks. 
+
+\emph{All the methods target at providing privacy guarantee to the deterministic graph. The uncertain scenario is unexplored.}
+
+\subsection{Our Privacy Goal}
+As ever discussed, existing schemes fail to provide utility guarantee in the uncertain scenario. 
+In this work, we try to move this line of research one step forward from the deterministic context to a broader probabilistic context. 
+We believe the anonymization process needed to be specially optimized to uncertain graphs.
+Our work seeks a solution to share meaningful uncertain graphs while preserving privacy.
+
+There is a widespread belief that differential privacy and its offsprings are immune to various privacy attacks. It offers a guarantee bound $\epsilon$ on the loss of privacy due to the data release~\cite{Sala_Sharing_2011,Xiao_Differentially_2014}. However, there is no clear way to set general policy for choosing the privacy parameter $\epsilon$ for sufficient privacy guarantee~\cite{lee2011}. Its implications and impacts on the risk of disclosure in practice heavy depend on data detail. Thus, differential privacy is difficult to apply in practice. 
+
+In contrast, the notion of syntactic privacy can be defined and understood based on the data schema. And, its parameters have a clear privacy meaning that can be understood independent of the actual data. Moreover, they have a clear relationship to the privacy regulation of individual identifiability (e.g., European GDPR Law). 
+Hence, we focus on sharing uncertain graphs with syntactic anonymity. 
