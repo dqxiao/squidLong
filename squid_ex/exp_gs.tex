@@ -1,4 +1,4 @@
-\subsection{Results on uncertain graph statistic preserving}
+\subsection{Uncertain Graph Statistic Preserving}
 In the set of experiment, we focus on evaluating their performance concerning statistic preserving. 
 The evaluation includes two groups of graph statistics. 
 The first group includes node separation statistics that quantify the interconnectivity and density of the overall graph.   
@@ -9,12 +9,11 @@ Our results are highly consistent across our pool of graph statistics.
 For brevity, we report only Reliability, Node Degree as their representatives. 
 
 \textbf{Node Separation Statistic.} 
-In Figure~\ref{fig:rd}, we plot how the connectivity distortion increases as the anonymity level $k$ increases. 
+We plot the connectivity distortion introduced by anonymity process in Figure~\ref{fig:rd}.  
 As expected, larger $k$ introduced more significant connectivity distortion, because more noise was added to achieve the desired level of anonymity.   
 These observations are consistent across biological and social uncertain graphs.
-We report the reliability discrepancy compared with ones of the original uncertain graph. 
 
-We can see that {\methodName} achieve much better result than CA and RA, due to the integration of possible world semantics and uncertainty-aware search strategy. 
+There is a clear improvement of {\methodName} over CA and RA methods for the integration of possible world semantics and uncertain-aware search strategy. 
 For example, in all the dataset ($k=300$), the reliability discrepancy introduced by {\methodName} is well below 0.1 whereas the ones added by CA is below 0.2. The reliability discrepancy introduced by RA on PPI, BK, DBLP is around 0.2, 0.2, 0.4 respectively. We also observe that as the size of graph increases (PPI $\rightarrow$ DBLP), the performance gap becomes larger and larger.
 
 Note that CA and RA schemes deteriorate data utility due to the disregarding the possible world semantics. 

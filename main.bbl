@@ -1,0 +1,194 @@
+\begin{thebibliography}{10}
+
+\bibitem{Adar_Managing_2007}
+E.~Adar and C.~Re.
+\newblock Managing uncertainty in social networks.
+\newblock {\em {IEEE} Data Eng. Bull.}, 2007.
+
+\bibitem{Campan2008}
+T.~M.~T. Alina~Campan.
+\newblock A clustering approach for data and structural anonymity in social
+  networks.
+\newblock {\em PinKDD}, 2008.
+
+\bibitem{Bhagat_Class_2009}
+S.~Bhagat, G.~Cormode, B.~Krishnamurthy, and D.~Srivastava.
+\newblock Class-based graph anonymization for social network data.
+\newblock {\em VLDB}, 2009.
+
+\bibitem{Boldi_Injecting_2012}
+P.~Boldi, F.~Bonchi, A.~Gionis, and T.~Tassa.
+\newblock Injecting uncertainty in graphs for identity obfuscation.
+\newblock {\em VLDB}, 2012.
+
+\bibitem{Boldi_Rosa_Vigna_2011}
+P.~Boldi, M.~Rosa, and S.~Vigna.
+\newblock {HyperANF}: approximating the neighbourhood function of very large
+  graphs on a budget.
+\newblock {\em CoRR}, 2011.
+
+\bibitem{Bonchi_Identity_2014}
+F.~Bonchi, A.~Gionis, and T.~Tassa.
+\newblock Identity obfuscation in graphs through the information theoretic
+  lens.
+\newblock {\em ICDE}, 2014.
+
+\bibitem{Cho_Friendship_2011}
+E.~Cho, S.~A. Myers, and J.~Leskovec.
+\newblock Friendship and mobility: user movement in location-based social
+  networks.
+\newblock {\em KDD}, 2011.
+
+\bibitem{Colbourn_Colbourn_1987}
+Colbourn and Colbourn.
+\newblock The combinatorics of network reliability.
+\newblock 1987.
+
+\bibitem{Das_Anonymizing_2010}
+S.~Das, O.~Egecioglu, and A.~Abbadi.
+\newblock Anonymizing weighted social network graphs.
+\newblock {\em ICDE}, pages 904--907, 2010.
+
+\bibitem{Day:2016}
+W.-Y. Day, N.~Li, and M.~Lyu.
+\newblock Publishing graph degree distribution with node differential privacy.
+\newblock {\em SIGMOD}, 2016.
+
+\bibitem{Xiao:2018}
+X.~Dongqing, E.~Mohamed~Y, and K.~Xiangnan.
+\newblock Sharing uncertain graphs using syntactic private graph models.
+\newblock {\em ICDE}, 2018.
+
+\bibitem{Hartung_Theory_2015}
+S.~Hartung and N.~Talmon.
+\newblock The complexity of degree anonymization by graph contractions.
+\newblock {\em TAMC}, 2015.
+
+\bibitem{hay2010resisting}
+M.~Hay, G.~Miklau, D.~Jensen, D.~Towsley, and C.~Li.
+\newblock Resisting structural re-identification in anonymized social networks.
+\newblock {\em VLDB}, 2010.
+
+\bibitem{Hay_Anonymizing_2007}
+M.~Hay, G.~Miklau, D.~Jensen, P.~Weis, and S.~Srivastava.
+\newblock Anonymizing social networks.
+\newblock 2007.
+
+\bibitem{Hua_Probabilistic_2010}
+M.~Hua and J.~Pei.
+\newblock Probabilistic path queries in road networks: traffic uncertainty
+  aware path selection.
+\newblock {\em EDBT}, 2010.
+
+\bibitem{Jin_Distance_2011}
+R.~Jin, L.~Liu, B.~Ding, and H.~Wang.
+\newblock Distance-constraint reachability computation in uncertain graphs.
+\newblock {\em VLDB}, 2011.
+
+\bibitem{Kempe_Maximizing_2003}
+D.~Kempe, J.~Kleinberg, and {\'E}.~Tardos.
+\newblock Maximizing the spread of influence through a social network.
+\newblock 2003.
+
+\bibitem{lee2011}
+J.~Lee and C.~Clifton.
+\newblock How much is enough? choosing $\epsilon$ for differential privacy.
+\newblock {\em ISC}, 2011.
+
+\bibitem{Liu_Towards_2008}
+K.~Liu and E.~Terzi.
+\newblock Towards identity anonymization on graphs.
+\newblock {\em SIGMOD}, 2008.
+
+\bibitem{Liu_Privacy_2009}
+L.~Liu, J.~Wang, J.~Liu, and J.~Zhang.
+\newblock Privacy preservation in social networks with sensitive edge weights.
+\newblock {\em SDM}, 2009.
+
+\bibitem{Nguyen_Anonymizing_2015}
+H.~Nguyen, A.~Imine, and M.~Rusinowitch.
+\newblock Anonymizing social graphs via uncertainty semantics.
+\newblock {\em CCS}, 2015.
+
+\bibitem{Ninggal_Utility_2015}
+M.~Ninggal and J.~H. Abawajy.
+\newblock Utility-aware social network graph anonymization.
+\newblock {\em J Netw Comput Appl}, 2015.
+
+\bibitem{Parchas_Gullo_Papadias_Bonchi_2014}
+Parchas, Gullo, Papadias, and Bonchi.
+\newblock The pursuit of a good possible world: extracting representative
+  instances of uncertain graphs.
+\newblock {\em SIGMOD}, 2014.
+
+\bibitem{Potamias_K_2010}
+M.~Potamias, F.~Bonchi, A.~Gionis, and G.~Kollios.
+\newblock K-nearest neighbors in uncertain graphs.
+\newblock {\em VLDB}, 2010.
+
+\bibitem{Sala_Sharing_2011}
+A.~Sala, X.~Zhao, C.~Wilson, and H.~Zheng.
+\newblock Sharing graphs using differentially private graph models.
+\newblock {\em IMC}, 2011.
+
+\bibitem{Skarkala_Privacy_2012}
+M.~Skarkala, M.~Maragoudakis, S.~Gritzalis, L.~Mitrou, H.~Toivonen, and
+  P.~Moen.
+\newblock Privacy preservation by {k-Anonymization} of weighted social
+  networks.
+\newblock {\em ASONAM}, 2012.
+
+\bibitem{Sweeney:2002:KAM:774544.774552}
+L.~Sweeney.
+\newblock K-anonymity: A model for protecting privacy.
+\newblock {\em Int. J. Uncertain. Fuzziness Knowl.-Based Syst.}, 2002.
+
+\bibitem{Cohen2013}
+T.~Tassa and D.~J. Cohen.
+\newblock Anonymization of centralized and distributed social networks by
+  sequential clustering.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering}, 2013.
+
+\bibitem{Wang2011}
+Y.~Wang, L.~Xie, B.~Zheng, and K.~C.~K. Lee.
+\newblock Utility-oriented k-anonymization on social networks.
+\newblock {\em DASFAA}, 2011.
+
+\bibitem{Wu_k_2010}
+W.~Wu, Y.~Xiao, W.~Wang, Z.~He, and Z.~Wang.
+\newblock k-symmetry model for identity anonymization in social networks.
+\newblock {\em EDBT}, 2010.
+
+\bibitem{Xiao_Differentially_2014}
+Q.~Xiao, R.~Chen, and K.~Tan.
+\newblock Differentially private network data release via structural inference.
+\newblock {\em KDD}, 2014.
+
+\bibitem{Ying2009}
+X.~Ying, K.~Pan, X.~Wu, and L.~Guo.
+\newblock Comparisons of randomization and k-degree anonymization schemes for
+  privacy preserving social network publishing.
+\newblock {\em SNA-KDD}, 2009.
+
+\bibitem{Ying_Randomizing_2008}
+X.~Ying and X.~Wu.
+\newblock Randomizing social networks: a spectrum preserving approach.
+\newblock {\em SIAM}, 2008.
+
+\bibitem{Zhao_Detecting_2014}
+B.~Zhao, J.~Wang, M.~Li, F.~Wu, and Y.~Pan.
+\newblock Detecting protein complexes based on uncertain graph model.
+\newblock {\em TCBB}, 2014.
+
+\bibitem{Zhou_Preserving_2008}
+B.~Zhou and J.~Pei.
+\newblock Preserving privacy in social networks against neighborhood attacks.
+\newblock {\em ICDE}, 2008.
+
+\bibitem{Zou:2009}
+L.~Zou, L.~Chen, and M.~T. \"{O}zsu.
+\newblock K-automorphism: A general framework for privacy preserving network
+  publication.
+\newblock {\em Proc. VLDB Endow.}, 2009.
+
+\end{thebibliography}

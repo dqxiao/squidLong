@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: abbrv.bst
+Database file #1: refs.bib.bib
+Warning--empty journal in Colbourn_Colbourn_1987
+Warning--empty journal in Hay_Anonymizing_2007
+Warning--empty journal in Kempe_Maximizing_2003
+You've used 36 entries,
+            2118 wiz_defined-function locations,
+            677 strings with 9118 characters,
+and the built_in function-call counts, 10133 in all, are:
+= -- 928
+> -- 676
+< -- 1
++ -- 268
+- -- 228
+* -- 636
+:= -- 1895
+add.period$ -- 108
+call.type$ -- 36
+change.case$ -- 222
+chr.to.int$ -- 0
+cite$ -- 39
+duplicate$ -- 370
+empty$ -- 628
+format.name$ -- 228
+if$ -- 1981
+int.to.chr$ -- 0
+int.to.str$ -- 36
+missing$ -- 36
+newline$ -- 183
+num.names$ -- 72
+pop$ -- 228
+preamble$ -- 1
+purify$ -- 186
+quote$ -- 0
+skip$ -- 273
+stack$ -- 0
+substring$ -- 212
+swap$ -- 42
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 144
+warning$ -- 3
+while$ -- 74
+width$ -- 38
+write$ -- 360
+(There were 3 warnings)

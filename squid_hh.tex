@@ -6,7 +6,7 @@ Recently, the most popular paradigm for solving such problems has been using a c
 
 Successes of this approach include
 (1) anonymity-aware ones that suggest injecting more considerable noise to unique nodes~\cite{Ying2009,Boldi_Injecting_2012,Hay_Anonymizing_2007} 
-(2) utility-aware ones that indicate avoiding distortion over “bridge” edges whose deletion/addition would significantly impact the graph structure~\cite{Wang2011,Ninggal_Utility_2015}. 
+(2) utility-aware ones that avoid distortion over “bridge” edges whose deletion/addition would significantly impact the graph structure~\cite{Wang2011,Ninggal_Utility_2015}. 
 The judicious edge selection must involve two types of heuristics which complement each other. 
 Individually, they are far less effective. 
 However, they have not been explored yet in the context of uncertain graphs.
@@ -17,44 +17,47 @@ Besides, we develop an efficient algorithm for its evaluation.
 And, we show the use of multi-heuristics boosts anonymization efficiently and straightforwardly.
 
 \textbf{Generalized Uniqueness}~~
-The uniqueness criterion was used to measure how unique a given node is among all the nodes in the graph {\wrt} a specific property. 
-For a given node, its uniqueness score is the inverse of the commonness score of its property value $w$.
+The uniqueness criterion was used to measure how unique a given node is among all the nodes in the graph {\wrt} a specific property $P$. 
+For a given node $v$, its uniqueness score is the inverse of the commonness score of its property value $w=P(v)$.
 And, the commonness score of $w$ amounts to the weighted average distance among all other property values.
 
 However, the conventional method merely formulates node properties as discrete values and relies on the geometric distance function to measure their distance.  
-Thus, it fails to handle our problem where the property values are probabilistic.
-We extend the preliminary version to handle the probabilistic case. 
+Thus, it fails to handle uncertain graphs where the property values are probabilistic.
 
-\begin{figure}[!htb]
+\begin{figure}[tb]
   \centering
         \includegraphics[width=\linewidth]{ill/shift_distance.pdf}
-    \caption{The generalization of uniqueness.}
+  \caption{The generalization of uniqueness.}
 \end{figure}
 
-We systematically model uncertain property values in both continuous and discrete domains as continuous and discrete random variables, respectively.
-We consider the use of probability distributions, which are essential characteristics of uncertain property values, in the measuring similarity between uncertain property values. 
-We use the well known Kullback-Leibler divergence to measure the distance between random variables with parameterized distributions. 
-The generalized uniqueness can then be formalized as
+We extend the preliminary version to handle the probabilistic case. 
+We first systematically model uncertain property values in both continuous and discrete domains as continuous and discrete random variables, respectively.
+Then, we consider the use of probability distributions, which are essential characteristics of uncertain property values, in the measuring similarity between uncertain property values. 
+In this work, we use the well known Kullback-Leibler divergence to measure the distance between random variables with parameterized distributions. 
+
 \begin{definition}
     \textbf{Uniqueness Score}
-     Let $\mathit{p}(v)$ be the property value of the vertex $v$ in the input uncertain graph, 
-     let $d$ be the KL divergence function, and let $\theta >0$  be a parameter. 
-       Then the $\theta$-commonness of the property values $\omega$
-       is $C_{\theta}(\omega)$ amounts to a weighted average over all other property values $\omega'$.    
+    Let $P$ be a property on the set of nodes $V$ of the input graph ,  
+    let $d$ be the KL divergence function, 
+    and let $\theta >0$  be a parameter. 
+    Then the $\theta$-commonness of the property values $\omega$
+    is $C_{\theta}(\omega)$ amounts to a weighted average over all other property values $\omega'$.    
      while the corresponding uniqueness is $U_{\theta}:= \frac{1}{C_{\theta}(\omega)}$. 
+    \vspace{-5pt}
 \end{definition} 
-Note that, the weights decays exponentially as a function of the KL divergence among property values, 
+In the above definition, the weights decays exponentially as a function of the KL divergence among property values, 
 and the parameter $\theta$ determines the decay rate. 
 \begin{equation*}
   C_{\theta}(\omega) = \sum_{u \in V} \Phi_{\theta}(KL(\omega, P(v)))
 \end{equation*}
 In this work, we set $\theta=\sigma$ as the injected noise blurs the meta-distribution of property values. 
+It should be noted that the commonness and uniqueness are meaningful only as relative measures. 
  
 \textbf{Generalized Edge Relevance}~~
 Alteration over a single edge would produce local structural change and send ripples through the rest of the graph. 
 Even with the same amount of deviation, the incurred structural distortion varies on the topological role of the altered edge. 
-Targets at the high utility, we should penalize modification over structurally critical edges.  
-It naturally raises the need of measuring the relevance of edges in the uncertain context. 
+Targets at the high utility, we should penalize edge modifications according to the incurred structural distortion.  
+It naturally raises the need of measuring the relevance of edges in the probabilistic context. 
 
 There are many potential ways to measure it. 
 Importantly, the metric should be able to capture key properties of uncertain graphs.
@@ -83,7 +86,7 @@ In probabilistic graphs, $\mathcal{ERR}$ is used to generalize this concept by q
 \end{observation}
 
 \textbf{Proof Sketch.}~~
-According to the possible world semantic and factorization rule, we can see that   
+According to the possible world semantics and factorization rule, we can see that   
 \begin{equation*}
   R_{u,v} (\mathcal{G}) = p(e) \cdot R_{u,v}(\mathcal{G}_{e}) ~+~ \big[ 1-p(e) \big] \cdot R_{u,v} (\mathcal{G}_{\bar{e}})
 \end{equation*}
@@ -95,11 +98,11 @@ Therefore, two-terminal reliability discrepancy introduced by the single deviati
     &= r_{e} \cdot ~\big[  R_{u,v}(\mathcal{G}_{e}) - R_{u,v} (\mathcal{G}_{\bar{e}})  \big]
   \end{split}
 \end{equation*}
-After aggregation and eliminating the factor $r_{e}$, the reliability relevance of an edge $e$ is equivalent to Equation~\ref{eq:err}. $\square$
+After aggregation and eliminating the factor $r_{e}$, we can see that the reliability relevance of an edge $e$ is equivalent to Equation~\ref{eq:err}. $\square$
 
 Equation~\ref{eq:err} reminds us the basic concept of cut-edge. 
 % What is the relationship between Equation~\ref{eq:err} and the conventional cut-edge definition? 
-In the deterministic scenario, a cut-edge is an edge of a graph whose deletion increase its number of connected components. 
+In a deterministic graph, a cut-edge is an edge of a graph whose deletion increase its number of connected components. 
 We can see that the cut-edge is a binary version of $\mathcal{E}RR$.  
 While $\mathcal{E}RR$ is a continuous function regarding the edge deviation $r_{e}$ and reliability discrepancy. 
 $\mathcal{E}RR$ is not only relevant to connectivity discrepancy but also consider its scale.  

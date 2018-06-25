@@ -11,9 +11,18 @@ The released graph is available for all the analysis tasks.
 These approaches usually provide privacy protection against specific de-anonymization attacks. 
 Most of them leverage syntactic privacy models derived from $k$-anonymity~\cite{Sweeney:2002:KAM:774544.774552} which requires creating $k$ same entities ({\eg} neighborhoods, degree nodes) to blend victims. 
 
-Related graph anonymization methods can be classified into four main categories: (1) Clustering-based generalization~\cite{Hay_Anonymizing_2007,Bhagat_Class_2009,hay2010resisting}; (2)~{\em Edge modification}~\cite{Liu_Towards_2008, Zhou_Preserving_2008, Wang2011, Wu_k_2010, Skarkala_Privacy_2012}; 
+Related anonymization methods can be classified into four main categories: (1) Clustering-based generalization~\cite{Hay_Anonymizing_2007,Bhagat_Class_2009,hay2010resisting}; (2)~{\em Edge modification}~\cite{Liu_Towards_2008, Zhou_Preserving_2008, Zou:2009, Wang2011, Wu_k_2010, Skarkala_Privacy_2012}; 
 (3)~{\em Edge randomization}~\cite{Liu_Privacy_2009,Ying_Randomizing_2008, Ninggal_Utility_2015};
-and~(4)~{\em Uncertainty semantic-based modifications} which add uncertainty to some edges and thus converting the deterministic graph to an uncertain version~\cite{Boldi_Injecting_2012, Nguyen_Anonymizing_2015}. The uncertainty semantic-based approaches are known as the state-of-art ones because of their excellent privacy-utility trade-off, brought by the fine-grained perturbation leveraging the uncertain semantics. 
+and~(4)~{\em Uncertainty semantic-based modifications} which add uncertainty to some edges and thus converting the deterministic graph to an uncertain version for anonymity~\cite{Boldi_Injecting_2012, Nguyen_Anonymizing_2015}. 
+
+In the first category, Hay {\etal}~\cite{Hay_Anonymizing_2007} proposed to generalize a network by clustering nodes and only publish the hyper-graph ($\#$ of nodes in each partition with $\#$ of edges within and across partitions). Campan {\etal}~\cite{Campan2008} studied the attributed graph case with a similar solution. 
+Cohen {\etal}~\cite{Cohen2013} presented a sequential clustering algorithm with better utility preserving. While, Cormode{\etal} \cite{Bhagat_Class_2009} payed attention to attributed-based matching attack. To this end, their method marks the mapping by clustering the nodes and corresponding real world entities into groups. 
+
+In the second category, Liu {\etal}~\cite{Liu_Towards_2008} focused on resisting degree-based entity re-identification attacks. They propose to add and delete edges to pursue $k$-degree anonymity. Zhou {\etal}~\cite{Zhou_Preserving_2008} consider stronger re-identification attack based on radius-one subgraph. Zhou~{\etal}~\cite{Zou:2009} assume that the adversary knows the compute graph. Their algorithms use edge addition and deletion to make graph $k$-Automorphism.  
+
+In the third category, Hay {\etal} \cite{Liu_Privacy_2009} study the use of random perturbation for identity obfuscation. They consider the basic degree-based re-identification of nodes. Besides, they propose to quantify the level of anonymity that is provided for the given node $v$ in the real network by the perturbed graph as the inverse of the maximum of the belief probability $Pr(v|u)$. Ying {\etal} \cite{Ying_Randomizing_2008} compare random perturbation methods to the method of $k-$degree anonymity. Their experiments over two datasets (Enron and Pollblogs) show the deterministic edge modification methods for $k$-degree anonymity preserve the graph structure better than random perturbation methods.
+
+The uncertainty semantic-based approaches are known as the state-of-art ones because of their excellent privacy-utility trade-off, brought by the fine-grained perturbation leveraging the uncertain semantics. 
 Our method belongs to the fourth category while for the probabilistic context. 
 
  
@@ -30,5 +39,5 @@ Our work seeks a solution to share meaningful uncertain graphs while preserving 
 
 There is a widespread belief that differential privacy and its offsprings are immune to various privacy attacks. It offers a guarantee bound $\epsilon$ on the loss of privacy due to the data release~\cite{Sala_Sharing_2011,Xiao_Differentially_2014}. However, there is no clear way to set general policy for choosing the privacy parameter $\epsilon$ for sufficient privacy guarantee~\cite{lee2011}. Its implications and impacts on the risk of disclosure in practice heavy depend on data detail. Thus, differential privacy is difficult to apply in practice. 
 
-In contrast, the notion of syntactic privacy can be defined and understood based on the data schema. And, its parameters have a clear privacy meaning that can be understood independent of the actual data. Moreover, they have a clear relationship to the privacy regulation of individual identifiability (e.g., European GDPR Law). 
+In contrast, the notion of syntactic privacy can be defined and understood based on the data schema. And, its parameters have a clear privacy meaning that can be understood independent of the actual data. Moreover, they have a clear relationship to the privacy regulation of individual identifiability (e.g., General Data Protection Regulation GDPR). 
 Hence, we focus on sharing uncertain graphs with syntactic anonymity. 
