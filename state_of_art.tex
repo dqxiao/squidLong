@@ -1,8 +1,8 @@
 \section{The State-of-Art Approach}
 \label{sec:soa}
-Before presenting our solution {\methodName}, we first describe the state-of-art graph anonymization approach ({\soaName})~\cite{Boldi_Injecting_2012} in the deterministic setting. 
+Before presenting our solution {\methodName}, we first describe the state-of-art graph anonymization approach ({\soaName})~\cite{Boldi_Injecting_2012} in the deterministic scenario. 
 The purpose of describing it is to separate the basic framework with the contribution of {\methodName}. 
-They differ in how to perform mutation. 
+They differ in the search strategy of sanitized candidate.  
 
 \subsection{Overview}~~
 The {\soaName} method obfuscates the (deterministic) graph data by adding or removing edges \emph{partially}. 
@@ -16,6 +16,7 @@ In particular, the uncertainty injecting scheme proceeds as follows:
     \end{cases}
     \label{eq:inject}
 \end{equation}
+Generally, it transfers edge existence from existing edges to non-existing ones for identification obfuscation.   
 
 \begin{figure}[htb]
   \centering
@@ -25,6 +26,7 @@ In particular, the uncertainty injecting scheme proceeds as follows:
   \vspace{-5pt}
   \label{fig:std}
 \end{figure} 
+% r_e is generated add sentence 
 The most widely known member of generating distribution $R({\sigma})$ is the truncated normal distribution with mean 0 and variance $\sigma^2$. 
 While $R$ could in principle be any distribution.
 As the standard deviation $\sigma$ decreases, a greater mass of $R_{\sigma}$ will concentrate near $r_{e}=0$.  

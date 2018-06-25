@@ -34,23 +34,26 @@ The probability of observing any possible world $G_i=(V,E_{G_i})$ is
 Apparently, simply removing the identities of the nodes before publishing the uncertain graph does not guarantee privacy.  The structure of the uncertain graph itself, and in its basic form the degree of the nodes, can be revealing the identities of individuals. 
 In practice, the adversary may have access to external information about the entities in the graphs. This information may be obtained by the adversary's malicious actions. 
 
-\textbf{Example} For the uncertain graph in Figure~\ref{fig:privacyAttack}, the adversary might know that ``\emph{Fred has \textbf{three or more} trust neighbors}''. Such information allows the adversary to narrow down the set of candidates in the sanitized graphs.  The statement partially re-identify Fred as $\lbrace 2,3,6 \rbrace$ with different \textbf{probabilities} respectively. 
+\textbf{Example.} For the uncertain graph in Figure~\ref{fig:privacyAttack}, the adversary might know that ``\emph{Fred has \textbf{three or more} trust neighbors}''. Such information allows the adversary to narrow down the set of candidates in the sanitized graphs.  The statement partially re-identify Fred as $\lbrace 2,3,6 \rbrace$ with different \textbf{probabilities} respectively. 
 Different to the deterministic scenario, such posterior probabilities significantly vary over candidate nodes $\lbrace 2,3,6 \rbrace$ where $P(\text{Fred}|2) \ll P(\text{Fred}|6) \ll P(\text{Fred}|2)$ as $P(\text{Fred}|2)=0.5*0.9*0.9=0.405$ and $P(\text{Freq}|2)=0.9*0.9*0.9=0.729$ and $P(\text{Freq}|6)=0.468$. 
 
 
 As ever illustrated, nodes in uncertain graphs are vulnerable to the re-identification risk. Such Entity Re-identification (ER) can lead to additional disclosures. In this work, we focus on the ER attack as it is one of the most serious privacy problems. 
 \subsection{Privacy Notion}
 \label{sec:privacyNotion}
-To resist ER attacks, we adopt $(k,\epsilon)$-obf, a variant of the well-known $k-$anonymity. It was proposed by Boldi {\etal} in ~\cite{Boldi_Injecting_2012}, where $k \ge 1$ is a desired level of obfuscation and $\epsilon \ge 0$ is a tolerance parameter. 
+In this work, we adopt $(k,\epsilon)$-obf, a variant of the well-known $k-$anonymity as the privacy notion for privacy-preserving uncertain graph releasing. 
+It was proposed by Boldi {\etal} in ~\cite{Boldi_Injecting_2012}, where $k \ge 1$ is a desired level of obfuscation and $\epsilon \ge 0$ is a tolerance parameter. 
 
 \textsc{Obfuscation Parameter}~~
-Similar to $k-$anonymity, $k-$obf requires blending every entity with other fuzzy matching entities. 
-$k$-anonymity requires that each entity is identical with at least k-1 other entities. 
-However, $k$-anonymity does not measure the amount of uncertainty correctly that the adversary has regarding the correct identification of the target individual~\cite{Bonchi_Identity_2014}. 
+Similar to $k$-candidate anonymity, 
+$k-$obf requires blending every entity with other fuzzy matching entities. 
+While, $k$-anonymity requires that each entity is identical with at least k-1 other entities. 
+Bonchi{\etal}~\cite{Bonchi_Identity_2014} observed that $k$-anonymity does not measure the amount of uncertainty correctly that the adversary has regarding the correct identification of the target individual. 
 
-$k$-obf generalizes the candidate anonymity concept to the probabilistic scenario. 
-For a given node $v$ in the real network, $k$-obf quantifies the level of obfuscation that is provided for $v$ by the perturbed graphs as the entropy of $\lbrace Pr(v|u) : u \in V_{\hat{G}}  \rbrace$, where $Pr(v|u)$ stands for the posterior belief probability that $u$ is the image of the target node $v$. 
-It lower bounds the entropy of the distribution by $\log_{2}k$.
+$k$-obf generalizes the candidate anonymity concept to the probabilistic scenario by the use of entropy. 
+For a given node $v$ in the real network, it quantifies the level of obfuscation that is provided for $v$ by the perturbed graphs as the entropy of $\lbrace Pr(v|u) : u \in V_{\hat{G}}  \rbrace$, where $Pr(v|u)$ stands for the posterior belief probability that $u$ is the image of the target node $v$. 
+
+% It lower bounds the entropy of the distribution by $\log_{2}k$.
 Though it is initially used to measure the anonymity provided by an uncertain graph to the deterministic graph, the stochastic nature makes it a good fit in the uncertain scenario. 
 
 \textsc{Tolerance parameter}~~As for the tolerance parameter $\epsilon$, it serves for the following purpose. There might be extreme unique nodes, e.g., Trump in a Twitter network, whose obfuscation is almost impossible. Thus, Boldi {\etal}~\cite{Boldi_Injecting_2012} introduce a tolerance parameter $\epsilon$, which allows skipping up to $\epsilon * |V|$ nodes and makes the privacy notion more practical. 
@@ -72,8 +75,8 @@ Though it is initially used to measure the anonymity provided by an uncertain gr
 % \end{definition} 
 \subsection{Utility Loss: Reliability Discrepancy}
 
-Connectivity discrepancy is widely used to measure the structural difference between deterministic graphs for following reasons. 
-First, the connectivity model is known to yield a better graph representation than the degree sequence model. 
+In the context of deterministic graphs, connectivity discrepancy is widely used to measure the structural distortion for the following reasons. 
+First, the connectivity model is known to yield a better graph representation than the degree sequence model.
 What's more, connectivity plays a vital role in various graph mining tasks such as nearest neighbor locating, decomposition and graph clustering. 
 \begin{figure}[!htb]
   \centering
@@ -83,9 +86,9 @@ What's more, connectivity plays a vital role in various graph mining tasks such 
   \label{fig:utility_loss}
 \end{figure} 
 
-The concept of reliability generalizes the connectivity concept uncertain scenario. 
+While, the concept of reliability generalizes the connectivity concept in the uncertain scenario. 
 It captures the probability that two given nodes are reachable over all possible worlds, as shown in Def~\ref{d:reliability}. 
-Analogous to the deterministic case, we use reliability discrepancy as the utility-loss metric in the uncertain scenario, as outlined in Def~\ref{d:RD}. 
+Analogous to the deterministic case, we use reliability discrepancy as the utility-loss metric for utility safeguard, as outlined in Def~\ref{d:RD}. 
 \begin{definition}
     \textbf{Two-Terminal Reliability~\cite{Colbourn_Colbourn_1987}}~~Given an uncertain graph $\mathcal{G}$, and two distinct nodes $u$ and $v$ in the graph, the reliability of $(u,v)$ is defined as:
         \begin{equation*}

@@ -30,7 +30,8 @@ In these applications, the data can be modeled and shared as uncertain graphs wh
 These uncertain graphs are invaluable for scientific research and commercial applications e.g., understanding social interactions, information propagation and advertising~\cite{Kempe_Maximizing_2003,Cho_Friendship_2011}. 
 Compared to sharing the results of graph mining, graph sharing gives greater flexibility as recipients can perform unlimited analysis, data explosion with novel methods.
 
-However, sharing these uncertain graphs would violate the privacy of users or entities profiled inside. In social trust network, the trust relationships among users, which significantly impact users' behaviors, are usually probabilistic.  They are useful in social interaction study and micro-targeting~\cite{Kempe_Maximizing_2003}. However, users are unwilling to share such confidential information with potential adversaries. In B2B networks, business operators also hesitate to share transaction patterns as it relates to confidential business models. Such tension is raising the question of sharing uncertain graphs without compromising privacy. 
+However, sharing these uncertain graphs could seriously jeopardize the privacy of users or entities profiled inside.
+In social trust network, the trust relationships among users, which significantly impact users' behaviors, are usually probabilistic.  They are useful in social interaction study and micro-targeting~\cite{Kempe_Maximizing_2003}. However, users are unwilling to share such confidential information with potential adversaries. In B2B networks, business operators also hesitate to share transaction patterns as it relates to confidential business models. Such tension is raising the question of sharing uncertain graphs without compromising privacy. 
 
 % State-of-Art %
 A number of privacy preserving graph sharing schemes have been studied in the deterministic scenario~\cite{Liu_Towards_2008,Ying_Randomizing_2008,Wang2011,Liu_Privacy_2009,Nguyen_Anonymizing_2015,Sala_Sharing_2011,Xiao_Differentially_2014,lee2011}, though many problems still remain unexplored in the uncertain scenario.
@@ -41,8 +42,8 @@ A number of privacy preserving graph sharing schemes have been studied in the de
 \end{figure}
 
 An obvious approach is to convert the uncertain graph sharing problem into the deterministic one by casting edge probabilities as edge weights. 
-Note that, one of the most important goals of sharing uncertain graphs is to maintain the data utility. 
-While, by disregarding the possible world semantics of the uncertain graph, casting-based approach, as later illustrated, fails to reflect uncertain graph properties such as connectivity, dense subgraphs correctly~\cite{Zhao_Detecting_2014,Hua_Probabilistic_2010}. 
+While, the general idea is appealing, the casting-based method is inadequate to provide desirable utility for uncertain graph. 
+By disregarding the possible world semantics of the uncertain graph, casting-based approach, as later illustrated, fails to reflect uncertain graph properties such as connectivity, dense subgraphs correctly~\cite{Zhao_Detecting_2014,Hua_Probabilistic_2010}. 
 Hence, the casting-based scheme could produce poor results in the uncertain scenario even if the weighted graph anonymization algorithm is good. 
 
 \textbf{Example}. \emph{Connectivity of deterministic subgraphs is generally measured by the concept of cut, which is defined as the sum of weights of intra edges. Generally, the bigger the cut, the harder to separate two subgraphs. In Figure~\ref{fig:motivation}(a), the equal cut $C(SG_{1},SG_{2})=C(SG_{3},SG_{2})=1$ implies the identical connectivity of $SG_{1}$ and $SG_{3}$ {\wrt} $SG_{2}$. However, with the possible world semantics, we know the probability to separate $SG_{1}$ and $SG_{2}$ is $(1-0.5)^{2}=0.25$, and that to separate $SG_{2}$ and $SG_{3}$ is $(1-0.3)(1-0.7)=0.21$. Hence, in fact, $SG_{2}$ is closer to $SG_{1}$ than to $SG_{3}$. }
@@ -66,16 +67,16 @@ The structural distortion incurred is evaluated by the specially designed utilit
 It aims to safeguard the utility of the release graphs.  
 Unfortunately, current graph utility loss metrics such as graph edit distance~\cite{Liu_Towards_2008}, spectrum discrepancy~\cite{Ying_Randomizing_2008}, community reconstruction error~\cite{Wang2011} and shortest path discrepancy~\cite{Liu_Privacy_2009} 
 are not suitable in our problem setting because of the ignorance of edge uncertainty.
-In this context, the discrepancy w.r.t standard uncertain graph reliability becomes a useful criterion. It evaluates the connectivity difference in the context of the entire graph and meanwhile utilizes the possible world model. 
+In this context, the discrepancy w.r.t the uncertain graph reliability becomes a useful criterion. It evaluates the connectivity difference in the context of the entire graph and meanwhile utilizes the possible world semantics. 
 
-$\bullet$~\textup{\emph{Intractable Search Space.}}~~Informally, our goal is to find a sanitized graph with the desired level of privacy by as few graph mutations as possible. 
-Even the simple deterministic graph anonymization problem, {\ie}, is known to be NP-hard when operations are limited to edge additions and deletions~\cite{Hartung_Theory_2015}. 
-In the uncertain scenario, the edge modification is no longer a binary operation (addition/deletion) but can be infinite probability values. 
+$\bullet$~\textup{\emph{Intractable Search Space.}}~~Informally, our goal is to find a sanitized graph with the desired level of privacy with as few graph mutations as possible. 
+Even the simple deterministic graph anonymization problem, {\ie}, is known to be NP-hard when mutations are limited to edge additions and deletions~\cite{Hartung_Theory_2015}. 
+In the probabilistic scenario, edge modifications are no longer limited to edge addition and deletion, but can be infinite probability deviations. 
 Exhaustive search is computationally intractable if the number of edges is large. 
-It makes the problem of uncertain graph anonymization very challenging. 
-Thus, we approximate the problem of interest via a randomized algorithm, which built on the basis of meta-heuristics. 
+It makes the uncertain graph anonymization problem very challenging. 
+In this work, we approximate the problem of interest via a randomized algorithm, which built on the basis of meta-heuristics. 
 
-In this work, we propose a solution tailored towards uncertain graphs via incorporating possible world semantics and test it on large datasets. We analyze the utility of sanitized graphs (uncertain ones) in two scenarios: extracting statistics for graph analysis, and performing influence prorogation. We show our method preserves as much the stochastic nature of the original uncertain graph as possible while injecting necessary structural noise to guarantee a desirable level of privacy. We also show that significant improvement of our methods over casting-based and representative-based methods. 
+In this work, we propose a novel sanitization solution tailored towards uncertain graphs via incorporating possible world semantics and test it on three real-life network datasets. We analyze the utility of sanitized graphs (uncertain ones) in two scenarios: extracting statistics for graph analysis, and performing influence prorogation. We show our method preserves as much the stochastic nature of the original uncertain graph as possible while injecting necessary structural noise to guarantee a desirable level of privacy. We also show that significant improvement of our methods over casting-based and representative-based methods. 
 Specifically, we make the following contributions.
 \begin{itemize}
 \item We are the first to formulate the uncertain graph sharing problem. 
@@ -85,4 +86,4 @@ Specifically, we make the following contributions.
 \item We conduct extensive experimental studies to demonstrate efficiency and practical utility of our algorithms. The results demonstrate a significant advantage over the conventional methods that do not directly consider edge uncertainties.
 \end{itemize}
 
-The rest of the paper is organized as follows. In Section~\ref{sec:relatedWork}, we summarize related works, point out the limitation of existing methods, and clarify our distinct privacy goal. In Section~\ref{sec:notation} we formulate the uncertain graph-anonymization problem. Sections~\ref{sec:soa} – ~\ref{sec:method} present the anonymization approach in the context of uncertain graphs.  In Section~\ref{sec:ex} we apply our method to several real-world uncertain graphs and demonstrate its efficiency and practical utility. 
+The rest of the paper is organized as follows. In Section~\ref{sec:relatedWork}, we summarize related works, point out the limitation of existing methods, and clarify our distinct privacy goal. In Section~\ref{sec:notation} we formulate the uncertain graph-anonymization problem. Sections~\ref{sec:soa} –~\ref{sec:method} present our anonymization approach for releasing privacy-preserving uncertain graph.  In Section~\ref{sec:ex} we apply our method to several real-world uncertain graphs and demonstrate its performance, practical utility and efficiency. 
