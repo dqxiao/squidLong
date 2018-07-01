@@ -1,9 +1,18 @@
 \subsection{Performance Measures}
-These anonymization algorithms were implemented in C++ and run on Intel Core i7 CPU, 2 GHZ, 6MB cache size. We plot their running times on on tested datasets (PPI, BK, DBLP) in Figure~\ref{fig:time}. For larger values for anonymity level $k$, all the methods take more time to find the sanitized solutions. It is because the increased efforts (more noises \& more modified edges) needed to achieve the higher anonymity level (larger values of $k$). 
+These anonymization algorithms were implemented in C++ and run on Intel Core i7 CPU, 2 GHz, 6MB cache size. We measure the time taken for both the pre-processing (representative extraction step in RA) and the synthetic graph generation. 
+Figure~\ref{fig:time} shows the time taken to produce obfuscated results of PPI, BK, DBLP. 
+For larger values for anonymity level $k$, all the methods take more time to find the sanitized solutions. It is because the increased efforts (more noises \& more modified edges) needed to achieve the higher anonymity level (larger values of $k$). 
 In comparison, our {\methodName} achieves the comparable efficiency with RA and CA methods.  
 
-As excepted, the time efficiency of our {\methodName} is close to RA, better than CA.
-{\methodName} and RA use the randomized search strategy to identify sanitized uncertain solutions using the given standard deviation $\sigma$, while {\methodName} takes a connectivity model instead of degree sequence adopted in RA. 
-The computation generalized uniqueness and relevance metrics can be finished off-line.
-As we mentioned, multi-heuristics can co-boost the randomized search strategy in the quite straightforward way with little extra effort. 
+As shown in Figure~\ref{fig:time}, the time efficiency of our {\methodName} is close to RA, much better than CA.
+{\methodName} and RA use the same randomized search strategy to identify sanitized solutions using the given standard deviation $\sigma$, while {\methodName} adopts a connectivity model in the probabilistic graph context instead of the degree sequence model adopted in RA. 
+Thus, time efficiency depends on how easy it is to find obfuscated solutions that pass the privacy test.  
+Note that, the computation of heuristics (generalized uniqueness and reliability relevance) can be finished off-line. 
+In the same time, multi-heuristics can co-boost the randomized search strategy in the quite straightforward way with little extra effort. 
+Even for severe privacy parameter ({\eg}, $k=300$), Squid can efficiently find obfuscated solutions. 
+Meanwhile, CA builds a linear programming (LP) model which preserves properties of weighted graphs are expressible as linear functions of the edge weights. It uses LP solver to find solutions where the computed solutions constitute the weights in the obfuscated graph. 
+
+
+
+
 

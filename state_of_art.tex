@@ -2,11 +2,11 @@
 \label{sec:soa}
 Before presenting our solution {\methodName}, we first describe the state-of-art graph anonymization approach ({\soaName})~\cite{Boldi_Injecting_2012} in the deterministic scenario. 
 The purpose of describing it is to separate the basic framework with the contribution of {\methodName}. 
-They differ in the search strategy of sanitized candidate.  
+They differ in the search strategy of sanitized candidates.  
 
 \subsection{Overview}~~
 The {\soaName} method obfuscates the (deterministic) graph data by adding or removing edges \emph{partially}. 
-For each edge $e$, it assigns a probability deviation $r_{e}$, where $r_{e} \leftarrow R(\sigma)$. 
+For each edge $e$, it assigns a probabilistic deviation $r_{e} \in [0,1]$, where $r_{e} \leftarrow R(\sigma)$. 
 In particular, the uncertainty injecting scheme proceeds as follows:
 \begin{equation}
     p(e) =
@@ -26,9 +26,10 @@ Generally, it transfers edge existence from existing edges to non-existing ones 
   \vspace{-5pt}
   \label{fig:std}
 \end{figure} 
-% r_e is generated add sentence 
+
+For the high utility of the obfuscated graph, smaller values of the parameter $r_{e}$ should be favored.  
 The most widely known member of generating distribution $R({\sigma})$ is the truncated normal distribution with mean 0 and variance $\sigma^2$. 
-While $R$ could in principle be any distribution.
+In principle, $R$ could be any distribution.
 As the standard deviation $\sigma$ decreases, a greater mass of $R_{\sigma}$ will concentrate near $r_{e}=0$.  
 As illustrated in Figure~\ref{fig:std}, smaller values of $\sigma$ generally contributes towards better utility preserving, while at the same time they provide lower level of obfuscation. 
 Larger values of $\sigma$ have the opposite effect.
@@ -37,22 +38,22 @@ Aiming at the high utility, {\soaName} aims at injecting the minimal amount of u
 As outlined in Algo~\ref{alg:obf}, it computes the minimal amount of uncertainty via a binary search on the $\sigma$ value. 
 \input{mainRoutine.tex}
 
-The search flow is determined by the function {\genobf}. The function {\genobf} handles the search of {\keobf} instances using a given standard deviation parameter $\sigma$. It either returns the found sanitized instance or failure sign.
-The search starts with an initial guess of an upper bound $\sigma_{u}$, which is iteratively doubled until a {\keobf} instance is found. Then, the binary search is performed over the range $[0,\sigma_{u}]$. The binary search terminates until the search interval is sufficiently short. The algorithm outputs the best sanitized output found (the last one that was successfully generated).
+The function {\genobf} determines the search flow. The function {\genobf} handles the search of {\keobf} instances using a given standard deviation parameter $\sigma$. It either returns the found sanitized instance or failure sign.
+The search starts with an initial guess of an upper bound $\sigma_{u}$, which is iteratively doubled until a {\keobf} instance is found. Then, the binary search is performed over the range $[0,\sigma_{u}]$. The binary search terminates until the search interval is sufficiently short. The algorithm outputs the best found sanitized output  (the last one that was successfully generated; the one with the samllest $\sigma$).
 
 \subsection{Genobf Function}
 It is a difficult problem to find {\keobf} sanitized solutions using a given parameter $\sigma$ over the intractable search space. 
-The function {\genobf} utilize the random search to alleviate the combinational intractability. 
-It separate the search process into running two independent modules: (1) uncertain noise generative models and (2) privacy tests. 
+The function {\genobf} separate the search process into running two independent modules: (1) uncertain noise generative models and (2) privacy tests. 
 The first constructs a utility-preserving noise generative model. 
-By contrast, the privacy test aims to safeguard the privacy of generated obfuscation.  
+By contrast, the privacy test aims to safeguard the privacy of generated obfuscation. 
+It utilizes the random search to alleviate the combinational intractability.  
 Multiple randomized attempts are performed. 
 Every obfuscated output is subject to this privacy test. 
-Iff all the attempts fail, {\genobf} returns failure sign. Otherwise, it returns the best found {\keobf} instance. 
+Iff all the attempts fail, {\genobf} returns failure sign. Otherwise, it returns the found {\keobf} instance.  
 
-Each attempt begins with selecting a subset of edges subject to alteration. 
+Each construction attempt begins with selecting a subset of edges subject to alteration. 
 Then, it assigns the deviation among selected edges and injects uncertainty. 
-The randomization process relies on the heuristic.  
+While, the randomization process heavily relies on the heuristic.  
 In particular, {\soaName} suggests calibrating the perturbation applied to an edge $e$ according to the ``uniqueness" of the two nodes $u$ and $v$. 
 In brief, if both $u$ and $v$ are common nodes {\wrt} the property, then $r_{e}$ should be very small; 
 on the other hand, if $u$ and $v$ are outliers, then $r_{e}$ should be higher. 
@@ -60,11 +61,8 @@ Meanwhile, edges need to be sampled with the higher probability if they are adja
 
 \subsection{Limitations} 
 The {\soaName} method achieves the desired level of obfuscation with the small change in the graph data, thus maintaining high utility.
-While, the design heavily tailored towards the deterministic scenario, {\eg}, it assumes that the existence of edges is binary (0,1).
-To release privacy-preserving uncertain graphs, this method has two critical weaknesses: 
-(2) It fails to handle uncertain graphs where the existence of edges is probabilistic. 
-All the operators, including edge selection and alteration, need to be integrated with possible world semantics carefully.  
-We are left asking the question, \emph{how to generalize existing methods to the probabilistic context?}
-
-
-
+However, this method has two critical weaknesses in the probabilistic context:
+(1) The design heavily tailored towards the deterministic scenario {\eg} it assumes the existence of edges is binary (0,1). Thus, it fails to handle uncertain graphs where the existence of edges is probabilistic. 
+All the operators, including edge selection and alteration, need to be integrated with possible world semantics carefully.
+(2)  Its scheme does not consider the structural relevance of edges in critical edge selection/alteration steps, which leads to unnecessary structural distortion.
+We are left asking the following questions, \emph{how to generalize existing methods to the probabilistic context?} and \emph{how to get a better trade-off between privacy and utility in the probabilistic context?} 

@@ -8,8 +8,25 @@ Then, RA utilizes the deterministic graph anonymization method~\cite{Boldi_Injec
 While, the CA method first casts the given uncertain graph into a weighted deterministic graph.
 Then, CA utilizes the weighted graph anonymization method, proposed by Sudipto~{\etal}~\cite{Das_Anonymizing_2010} to generate the corresponding sanitized output. 
 Finally, it re-casts the output to the probabilistic version.
-
+\input{squid_ex/setting.tex}
 \begin{figure*}[!htb]
+    \centering
+    \subfigure[PPI]{
+    \includegraphics[width=.31\textwidth]{expResult/ppi_time.pdf}
+    }
+    \subfigure[BK]{
+    \includegraphics[width=.31\textwidth]{expResult/bk_time.pdf}
+    }
+    \subfigure[DBLP]{
+    \includegraphics[width=.31\textwidth]{expResult/dblp_time.pdf}
+    }
+    \vspace{-5pt}
+    \caption{Time efficiency of different anonymization methods on three real graphs.}
+    \vspace{-5pt}
+    \label{fig:time}
+\end{figure*} 
+
+\begin{figure*}[t]
     \centering
     \subfigure[PPI]{
     \includegraphics[width=.31\textwidth]{expResult/ppi_RD.pdf}
@@ -21,10 +38,27 @@ Finally, it re-casts the output to the probabilistic version.
     \includegraphics[width=.31\textwidth]{expResult/dblp_RD.pdf}
     }
     \vspace{-5pt}
-    \caption{Reliability Discrepancy (RD) of sanitized uncertain graphs of different anonymization methods against original graphs. The smaller the discrepancy the more information of connectivity structure is preserved.}
+    \caption{Reliability Discrepancy (RD) of sanitized output graphs of different anonymization methods against original graphs for various values of obfuscation parameter $k$. The smaller the discrepancy the more information of connectivity structure is preserved.}
     \label{fig:rd}
 \end{figure*} 
-\begin{figure*}
+\begin{figure*}[!htb]
+    \centering
+    \subfigure[PPI]{
+    \includegraphics[width=.31\textwidth]{expResult/ppi_PathD.pdf}
+    }
+    \subfigure[BK]{
+    \includegraphics[width=.31\textwidth]{expResult/bk_PathD.pdf}
+    }
+    \subfigure[DBLP]{
+    \includegraphics[width=.31\textwidth]{expResult/dblp_PathD.pdf}
+    }
+    \vspace{-5pt}
+    \caption{Relative error of Shortest Path Distance (SPD) of sanitized output graphs of different anonymization methods against original graphs for various values of obfuscation parameter $k$.}
+    \label{fig:rd}
+\end{figure*} 
+
+\input{squid_ex/exp_time.tex}
+\begin{figure*}[!htb]
     \centering
     \subfigure[PPI]{
     \includegraphics[width=.31\textwidth]{expResult/ppi_dd.pdf}
@@ -36,28 +70,9 @@ Finally, it re-casts the output to the probabilistic version.
     \includegraphics[width=.31\textwidth]{expResult/dblp_dd.pdf}
     }
     \vspace{-5pt}
-    \caption{Degree error of sanitized uncertain graphs of different anonymization methods on three real graphs. The smaller the degree error the more information of degree distribution is preserved.}
-    \vspace{-9pt}
+    \caption{Degree error of sanitized uncertain graphs of different anonymization methods on three real graphs for various values of obfuscation parameter $k$. The smaller the degree error the more information of degree distribution is preserved.}
+    \vspace{-5pt}
     \label{fig:dd}
 \end{figure*} 
-\input{squid_ex/setting.tex}
 \input{squid_ex/exp_gs.tex}
-\begin{figure*}
-    \vspace{-5pt}
-    \centering
-    \subfigure[PPI]{
-    \includegraphics[width=.30\textwidth]{expResult/ppi_time.pdf}
-    }
-    \subfigure[BK]{
-    \includegraphics[width=.30\textwidth]{expResult/bk_time.pdf}
-    }
-    \subfigure[DBLP]{
-    \includegraphics[width=.30\textwidth]{expResult/dblp_time.pdf}
-    }
-    \vspace{-5pt}
-    \caption{Time efficiency of different anonymization methods on three real graphs.}
-    \label{fig:time}
-    \vspace{-10pt}
-\end{figure*}
 \input{squid_ex/exp_apl.tex}
-\input{squid_ex/exp_time.tex}
